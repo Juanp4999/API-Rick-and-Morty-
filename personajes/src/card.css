@@ -1,12 +1,9 @@
 * {
     font-family: cursive;
     text-align: center;
-  }
-  
+}
 
-
-  
-  .card {
+.card {
     grid-column: span 4;
     border: 1px solid;
     border-radius: 10px;
@@ -15,23 +12,45 @@
     align-items: center;
     padding: 10px;
     gap: 10px; 
-  }
-  
-  .card .descripcion {
+}
+
+.card .descripcion {
     flex: 1; 
     text-align: left; 
-  }
-  
-  .card img {
+}
+
+.card img {
     height: 100px; 
     width: auto; 
     object-fit: cover; 
-  }
-  
-  #usuarios {
+}
+
+#usuarios {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
     gap: 10px;
-  }
-  
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        grid-column: span 6; 
+    }
+    
+    .card img {
+        height: 80px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .card {
+        grid-column: span 12; 
+    }
+
+
+    .card img {
+        height: 60px;
+    }
+}

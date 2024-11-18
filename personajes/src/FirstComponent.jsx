@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { useState } from "react";
 import "./card.css";
 
 export const FirstComponent = ({ populateUsers }) => {
@@ -22,7 +21,7 @@ FirstComponent.propTypes = {
 
 export const ToggleComponent = () => {
   const [usuarios, setUsuarios] = useState([]);
-  const [filtroEspecie, setFiltroEspecie] = useState("");
+  const [filtroEspecie, setFiltroEspecie] = useState(""); 
 
   const populateUsers = (data) => {
     setUsuarios(data);
@@ -31,9 +30,9 @@ export const ToggleComponent = () => {
   const usuariosFiltrados = usuarios.filter(
     (usuario) =>
       usuario.species.toLowerCase().includes(filtroEspecie.toLowerCase()) ||
-      usuario.name.toLowerCase().includes(filtroEspecie.toLowerCase())
+      usuario.name.toLowerCase().includes(filtroEspecie.toLowerCase()) ||
+      usuario.gender.toLowerCase().includes(filtroEspecie.toLowerCase()) 
   );
-  
 
   return (
     <div>
@@ -42,9 +41,9 @@ export const ToggleComponent = () => {
 
       <input
         type="text"
-        placeholder="Filtrar"
+        placeholder="Filtrar por especie, nombre o género"
         value={filtroEspecie}
-        onChange={(e) => setFiltroEspecie(e.target.value)}
+        onChange={(e) => setFiltroEspecie(e.target.value)} // Un solo campo de búsqueda
       />
 
       <div id="usuarios" className="user-container">
@@ -53,6 +52,8 @@ export const ToggleComponent = () => {
             <div className="descripcion">
               <h3>{usuario.name}</h3>
               <p>{usuario.species}</p>
+              <p>{usuario.status}</p>
+              <p>{usuario.gender}</p>
             </div>
             <img
               src={usuario.image}
